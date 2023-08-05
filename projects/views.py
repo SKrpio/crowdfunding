@@ -34,8 +34,6 @@ class ProjectDetail (APIView):
         permissions.IsAuthenticatedOrReadOnly,
         IsOwnerOrReadOnly
     ]
-    
-
     def get_object(self, pk):
         try:
             project = Project.objects.get(pk=pk)
@@ -61,7 +59,10 @@ class ProjectDetail (APIView):
 
 
 class PledgeList (APIView):
-
+    permission_classes = [
+    permissions.IsAuthenticatedOrReadOnly,
+    IsOwnerOrReadOnly
+    ]
     def get(self, request):
         pledges = Pledge.objects.all()
         serializer = PledgeSerializer(pledges, many=True)
@@ -70,7 +71,7 @@ class PledgeList (APIView):
     def post(self, request):
         serializer = PledgeSerializer(data=request.data)
         if serializer.is_valid():
-            serializer.save()
+            serializer.save(supporter=request.user)
             return Response(
                 serializer.data,
                 status=status.HTTP_201_CREATED
