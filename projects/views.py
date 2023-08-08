@@ -1,7 +1,7 @@
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from .models import Project, Pledge
-from .serializers import ProjectSerializer, PledgeSerializer, ProjectDetailSerializer
+from .serializers import ProjectSerializer, PledgeSerializer, ProjectDetailSerializer, PledgeUpdate
 from django.http import Http404
 from rest_framework import status, permissions
 from .permissions import IsOwnerOrReadOnly
@@ -80,3 +80,12 @@ class PledgeList (APIView):
             serializer.errors,
             status=status.HTTP_400_BAD_REQUEST
         )
+    def put(self, request):
+        project = self.get_object(pk)
+        serializer = PledgeUpdate(
+            instance=project,
+            data=request.data,
+            partial=True
+        )
+        if serializer.is_valid():
+            serializer.save()
