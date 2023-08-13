@@ -6,13 +6,13 @@ Helping Hand allows those experiencing housing difficulties to receive financial
 
 
 ## Features
-* [] Functional Profiles
-* [] Ability for Helpers to create a new pledge
-* [] Ability to delete and update pledges
+* [X] Functional Profiles
+* [X] Ability for Helpers to create a new pledge
+* [X] Ability to delete and update pledges
 * [] 'About Us' page
-* [] Token Authentication
-* [] Responsive Design
-* [] Appropriate Status Codes
+* [X] Token Authentication
+* [X] Responsive Design
+* [X] Appropriate Status Codes
 
 ### Stretch Goals
 * [] Donator Status' levels that change depending on # of pledges
