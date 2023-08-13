@@ -47,39 +47,65 @@ Image of Wireframe design which details 6 site pages including the landing page,
  #6EA3F6 (Back Ground) 
  #F5F7F7 (Text) 
  #404756 (Logo)  
-'Cornflower Blue' for background colouring. 'Riverbed' (dark grey) for logo and accents. 'Black Haze' for text (slightly off-white) 
+'Cornflower Blue' for background colouring. 
+'Riverbed' (dark grey) for logo and accents. 
+'Black Haze' for text (slightly off-white) 
 (Images\ColourScheme.png)
 
 ## Fonts
-'Brandmark Sans 2 Color' for heading text. 'Unica One' for body text.
+'Brandmark Sans 2 Color' for heading text. 
+'Unica One' for body text.
 
 ## Submission Documentation
-{{ Fill this section out for submission }}
-
-Deployed Project: [Deployed website](http://linkhere.com/)
+Deployed Project: [Helping Hand](https://fly.io/apps/helpinghand)
 
 ### How To Run
-{{ What steps to take to run this code }}
+Once repository has been cloned and opened on your device, open a terminal.
+Activate a virtual environment and run your server.
+Within your terminal, enter "fly launch" and follow the prompts. 
 
 ### Updated Database Schema
-{{ Updated schema }}
-
-![image info goes here](./docs/image.png)
+N/A
+[image info goes here](./docs/image.png)
 
 ### Updated Wireframes
-{{  Updated wireframes }}
-
-![image info goes here](./docs/image.png)
+N/A
+[image info goes here](./docs/image.png)
 
 ### How To Register a New User
-{{ Step by step instructions for how to register a new user and create a new project (i.e. endpoints and body data). }}
+### Register a new user:
+1. Open Insomnia or similar, select 'HTTP Request' and POST method. Endpoint = http://127.0.0.1:8000/users/
+2. Select JSON and enter body: 
+{
+	"username":"YOURDETAILSHERE",
+	"password":"YOURDETAILSHERE",
+	"email":"YOURDETAILSHERE"
+}
+3. Send 
+
+### Create a new project:
+1. Open Insomnia or similar, select 'HTTP Request' and POST method. Endpoint = http://127.0.0.1:8000/projects/
+2. Select JSON and enter body: 
+{
+	"title": "YOURDETAILSHERE",
+	"description": "YOURDETAILSHERE",
+	"bio": "YOURDETAILSHERE",
+	"goal": YOURDETAILSHERE,
+	"image": "YOURDETAILSHERE",
+	"is_open": true,
+	"date_created": "YOURDETAILSHERE"
+}
+3. Send 
 
 ### Screenshots
-* [] A screenshot of Insomnia, demonstrating a successful GET method for any endpoint.
-![image info goes here](./docs/image.png)
+* [X] A screenshot of Insomnia, demonstrating a successful GET method for any endpoint.
+Screenshot of Insomnia which displays a successful GET method for creating a new project with JSON 
+(Images\GET Method.png)
 
-* [] A screenshot of Insomnia, demonstrating a successful POST method for any endpoint.
-![image info goes here](./docs/image.png)
+* [X] A screenshot of Insomnia, demonstrating a successful POST method for any endpoint.
+Screenshot of Insomnia which displays a successful POST method for creating a new user with JSON 
+(Images\POST Method.png)
 
-* [] A screenshot of Insomnia, demonstrating a token being returned.
-![image info goes here](./docs/image.png)
+* [X] A screenshot of Insomnia, demonstrating a token being returned.
+Screenshot of Insomnia which displays a successful API authentication token being generated for a registered user with JSON 
+(Images\AUTH TOKEN.png)
