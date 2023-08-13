@@ -38,7 +38,7 @@ class ProjectDetail (APIView):
         try:
             project = Project.objects.get(pk=pk)
             self.check_object_permissions(self.request, project)
-            return object
+            return project
         except Project.DoesNotExist:
             raise Http404
     
@@ -49,14 +49,15 @@ class ProjectDetail (APIView):
     
     def put(self, request, pk):
         project = self.get_object(pk)
-        serializer = ProjectDetailSerializer (
+        serializer = ProjectDetailSerializer(
             instance=project,
             data=request.data,
             partial=True
         )
         if serializer.is_valid():
             serializer.save()
-
+            return Response(serializer.data)
+        return Response(serializer.errors)
 
 class PledgeList (APIView):
     permission_classes = [
@@ -80,7 +81,7 @@ class PledgeList (APIView):
             serializer.errors,
             status=status.HTTP_400_BAD_REQUEST
         )
-    def put(self, request):
+    def put(self, request, pk):
         project = self.get_object(pk)
         serializer = PledgeUpdate(
             instance=project,
