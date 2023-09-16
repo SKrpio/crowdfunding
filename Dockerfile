@@ -16,11 +16,9 @@ RUN set -ex && \
     rm -rf /root/.cache/
 COPY . /code
 
-ENV SECRET_KEY "Bt6w3douy1YapXA3hcFqKEENzozb9GW3JdQv8LqdkPvzSrtD23"
+ENV SECRET_KEY "bPRABq593U0wftuPO6KgtkJdMoNEbr1AIiTmYpZYgz4nZzG8DM"
 RUN python manage.py collectstatic --noinput
-RUN chmod +x /code/run.sh
 
 EXPOSE 8000
 
-CMD ["/code/run.sh"]
-
+CMD ["gunicorn", "--bind", ":8000", "--workers", "2", "crowdfunding.wsgi"]
