@@ -14,11 +14,12 @@ RUN set -ex && \
     pip install --upgrade pip && \
     pip install -r /tmp/requirements.txt && \
     rm -rf /root/.cache/
-COPY . /code
+COPY crowdfunding/ /code/
 
 ENV SECRET_KEY "bPRABq593U0wftuPO6KgtkJdMoNEbr1AIiTmYpZYgz4nZzG8DM"
 RUN python manage.py collectstatic --noinput
 
 EXPOSE 8000
 
-CMD ["gunicorn", "--bind", ":8000", "--workers", "2", "crowdfunding.wsgi"]
+CMD ["/code/run.sh"]
+
