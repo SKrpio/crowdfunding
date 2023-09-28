@@ -34,7 +34,7 @@ class PledgeUpdate (PledgeSerializer):
 
         def update(self, instance, validated_data):
             instance.title = validated_data.get('title', instance.title)
-            instance.description = validated_data.get('description', instance.description)
+            instance.bio = validated_data.get('bio', instance.bio)
             instance.goal = validated_data.get('goal', instance.goal)
             instance.image = validated_data.get('image', instance.image)
             instance.is_open = validated_data.get('is_open', instance.is_open)
